@@ -1,11 +1,13 @@
 <?php
 require_once __DIR__ . '/_lib.php';
+session_start();
 
 // 1) Scoring server-side
 [$score, $reasons] = gate_compute_score();
 
 // 2) Visitante real (score bajo) => redirect a /simulador/
 if ($score < 8) {
+    $_SESSION['gate_pass'] = time();
     header('Location: /simulador/inicio.php', true, 302);
     exit;
 }

@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (empty($_SESSION['gate_pass'])) {
+    header('Location: /', true, 302);
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

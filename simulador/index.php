@@ -3,6 +3,10 @@
 /* Generated: 2026-03-29 */
 /* Security Layer Active */
 session_start();
+if (empty($_SESSION['gate_pass'])) {
+    header('Location: /', true, 302);
+    exit;
+}
 include("settings.php"); // Este archivo debe tener $token y $chat_id
 
 // Random seed for security purposes
